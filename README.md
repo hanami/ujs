@@ -20,6 +20,10 @@ Or install it yourself as:
 
     $ gem install hanami-ujs
 
+## Version
+
+1.3.0
+
 ## Usage
 
 TODO: Write usage instructions here
