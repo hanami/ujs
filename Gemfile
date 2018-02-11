@@ -11,3 +11,4 @@ end
 gem "hanami-devtools", git: "https://github.com/hanami/devtools.git", require: false
 
 gem "vanilla-ujs", "1.3.0"
+
