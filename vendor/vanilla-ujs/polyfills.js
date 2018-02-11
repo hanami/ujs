@@ -16,3 +16,4 @@ var CustomEvent = function (event, params) {
 CustomEvent.prototype = window.CustomEvent.prototype;
 
 window.CustomEvent = CustomEvent;
+
