@@ -1,15 +1,13 @@
-# Hanami::Ujs
+# Hanami::UJS
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hanami/ujs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Unobtrusive JavaScript (UJS) for [Hanami](http://hanamirb.org).
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your Hanami project's `Gemfile`:
 
 ```ruby
-gem 'hanami-ujs'
+gem "hanami-ujs"
 ```
 
 And then execute:
@@ -19,10 +17,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install hanami-ujs
-
-## Version
-
-1.3.0
 
 ## Usage
 
@@ -34,10 +28,15 @@ After checking out the repo, run `bin/setup` to install dependencies. You can al
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Copyright
-
-The JavaScript code comes from the hauleth/vanilla-ujs repository that can be found at https://github.com/hauleth/vanilla-ujs. They are MIT licensed (Copyright (c) 2013 Łukasz Niemier). Thank you for your awesome work!
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jodosha/hanami-ujs.
+Bug reports and pull requests are welcome on GitHub at https://github.com/hanami/ujs.
+
+## Acknowledgements
+
+This gem JavaScript code is from the great [vanilla-ujs](https://rubygems.org/gems/vanilla-ujs) gem,
+which is MIT licensed (Copyright (c) 2013 Łukasz Niemier). Thank you for your awesome work!
+
+## Copyright
+
+Copyright © 2018 Luca Guidi – Released under MIT License
