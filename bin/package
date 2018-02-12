@@ -17,8 +17,12 @@ bundle_update() {
 }
 
 concat_files() {
-    cat /dev/null > $dest
+    echo -e "//\n// $(bundle exec gem list hanami-ujs | tail -n 1)" > $dest
+    echo -e "// $(bundle exec gem list vanilla-ujs | tail -n 1)" >> $dest
+    echo -e "//\n// $(date -u)\n//" >> $dest
+
     for file in `bundle show vanilla-ujs`/lib/assets/javascripts/vanilla-ujs/*; do
+        echo -e "\n//\n// source: $(basename $file)\n//" >> $dest
         cat $file >> $dest
     done
 }
