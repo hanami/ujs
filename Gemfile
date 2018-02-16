@@ -24,3 +24,11 @@ gem "hanami-webconsole",  "0.1.0",       require: false, git: "https://github.co
 gem "hanami",             "1.2.0.beta1", require: false, git: "https://github.com/hanami/hanami.git",      branch: "develop"
 
 gem "hanami-devtools", git: "https://github.com/hanami/devtools.git", require: false
+
+platforms :ruby do
+  gem 'sqlite3'
+end
+
+platforms :jruby do
+  gem 'jdbc-sqlite3'
+end
