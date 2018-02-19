@@ -28,12 +28,6 @@ pipeline:
     commands:
       - ./script/ci
 
-  specs_jruby_91:
-    group: build
-    image: jruby:9.1.15.0-jdk
-    commands:
-      - ./script/ci
-
   rebuild-cache:
     image: plugins/s3-cache:1
     pull: true
