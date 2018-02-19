@@ -30,7 +30,7 @@ pipeline:
 
   specs_jruby_91:
     group: build
-    image: jruby:9.1.15.0
+    image: jruby:9.1.15.0-jdk
     commands:
       - ./script/ci
 
