@@ -2,21 +2,44 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-run_code_quality_checks() {
-  bundle exec rubocop .
+setup() {
+  bundle install --retry=10 --jobs=$(_cpu_count) --path=vendor/cache --no-prune
+}
+
+qa() {
+  rubocop_check
+}
+
+specs() {
+  run_unit_tests &&
+    run_isolation_tests
+}
+
+rubocop_check() {
+  bundle exec rubocop --parallel
+}
+
+_cpu_count() {
+    if [ -f /proc/cpuinfo ]; then
+      echo $(grep -c ^processor /proc/cpuinfo)
+    elif [ -z "$(command -v sysctl)" ]; then
+      echo $(sysctl -n hw.cpu)
+    else
+      echo 1
+    fi
 }
 
 run_unit_tests() {
   bundle exec rake spec:coverage
 }
 
-run_integration_tests() {
+run_isolation_tests() {
   local pwd=$PWD
-  local root="$pwd/spec/integration"
+  local root="$pwd/spec/isolation"
 
   for test in $(find $root -name '*_spec.rb')
   do
-    run_integration_test $test
+    run_isolation_test $test
 
     if [ $? -ne 0 ]; then
       local exit_code=$?
@@ -26,11 +49,11 @@ run_integration_tests() {
   done
 }
 
-run_integration_test() {
+run_isolation_test() {
   local test=$1
 
   printf "\n\n\nRunning: $test\n"
-  bundle exec rspec $test
+  ruby $test --options spec/isolation/.rspec
 }
 
 run_test() {
@@ -41,9 +64,14 @@ run_test() {
 }
 
 main() {
-  run_code_quality_checks &&
-    run_unit_tests &&
-    run_integration_tests
+  local subcommand=$@
+  setup
+
+  if [ "$subcommand" = "qa" ]; then
+    qa
+  else
+    specs
+  fi
 }
 
-main
+main $@
