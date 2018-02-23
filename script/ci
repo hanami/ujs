@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 setup() {
-  bundle install --retry=10 --jobs=$(_cpu_count) --path=vendor/cache --no-prune
+  bundle install --retry=10 --jobs=$(_cpu_count) --no-prune
 }
 
 qa() {
@@ -12,7 +12,7 @@ qa() {
 
 specs() {
   run_unit_tests &&
-    run_isolation_tests
+    run_integration_tests
 }
 
 rubocop_check() {
@@ -33,13 +33,13 @@ run_unit_tests() {
   bundle exec rake spec:coverage
 }
 
-run_isolation_tests() {
+run_integration_tests() {
   local pwd=$PWD
-  local root="$pwd/spec/isolation"
+  local root="$pwd/spec/integration"
 
   for test in $(find $root -name '*_spec.rb')
   do
-    run_isolation_test $test
+    run_integration_test $test
 
     if [ $? -ne 0 ]; then
       local exit_code=$?
@@ -49,11 +49,11 @@ run_isolation_tests() {
   done
 }
 
-run_isolation_test() {
+run_integration_test() {
   local test=$1
 
   printf "\n\n\nRunning: $test\n"
-  ruby $test --options spec/isolation/.rspec
+  bundle exec rspec $test
 }
 
 run_test() {
