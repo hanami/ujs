@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe "Show error page", type: :integration do
-  it "shows error page on exception" do
+RSpec.describe "Submit remote form", type: :integration do
+  it "successfully sends AJAX request" do
     with_project do
       generate "action web home#index --url=/"
       rewrite "apps/web/templates/home/index.html.erb", <<~CODE
@@ -126,6 +126,7 @@ RSpec.describe "Show error page", type: :integration do
   def with_project
     super("bookshelf", gems: { "hanami-ujs" => { path: Pathname.new(__dir__).join("..", "..").realpath.to_s } }) do
       replace_last "apps/web/application.rb", "# sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']", "sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']"
+      bundle_install
       yield
     end
   end
