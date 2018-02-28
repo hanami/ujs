@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 lib = File.expand_path("../lib", __FILE__)
@@ -14,12 +13,11 @@ Gem::Specification.new do |spec|
   spec.summary       = "Hanami UJS"
   spec.description   = "Hanami Unobtrusive JavaScript"
   spec.homepage      = "http://hanamirb.org"
+  spec.license       = "MIT"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
-  spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files         = `git ls-files -- lib/* CHANGELOG.md LICENSE.md README.md hanami-ujs.gemspec`.split($INPUT_RECORD_SEPARATOR)
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

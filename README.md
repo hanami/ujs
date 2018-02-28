@@ -2,6 +2,10 @@
 
 Unobtrusive JavaScript (UJS) for [Hanami](http://hanamirb.org).
 
+## Status
+
+[![Gem Version](http://img.shields.io/gem/v/hanami-ujs.svg)](https://badge.fury.io/rb/hanami-ujs)
+
 ## Installation
 
 Add this line to your Hanami project's `Gemfile`:
