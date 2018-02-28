@@ -20,8 +20,8 @@ gem "hanami-helpers",     "1.2.0.beta1", require: false, git: "https://github.co
 gem "hanami-mailer",      "1.2.0.beta1", require: false, git: "https://github.com/hanami/mailer.git",      branch: "develop"
 gem "hanami-assets",      "1.2.0.beta1", require: false, git: "https://github.com/hanami/assets.git",      branch: "develop"
 gem "hanami-cli",         "0.2.0.beta1", require: false, git: "https://github.com/hanami/cli.git",         branch: "develop"
-gem "hanami-webconsole",  "0.1.0",       require: false, git: "https://github.com/hanami/webconsole.git",  branch: "master"
 gem "hanami",             "1.2.0.beta1", require: false, git: "https://github.com/hanami/hanami.git",      branch: "develop"
+gem "hanami-webconsole",  "0.1.0.beta1", require: false, git: "https://github.com/hanami/webconsole.git",  branch: "develop"
 
 gem "hanami-devtools", git: "https://github.com/hanami/devtools.git", require: false
 
