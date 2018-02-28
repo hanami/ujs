@@ -20,13 +20,13 @@ rubocop_check() {
 }
 
 _cpu_count() {
-    if [ -f /proc/cpuinfo ]; then
-      echo $(grep -c ^processor /proc/cpuinfo)
-    elif [ -z "$(command -v sysctl)" ]; then
-      echo $(sysctl -n hw.cpu)
-    else
-      echo 1
-    fi
+  if [ -f /proc/cpuinfo ]; then
+    echo $(grep -c ^processor /proc/cpuinfo)
+  elif [ -z "$(command -v sysctl)" ]; then
+    echo $(sysctl -n hw.cpu)
+  else
+    echo 1
+  fi
 }
 
 run_unit_tests() {
