@@ -20,7 +20,50 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Setup
+
+You have to add two lines to the application layout (eg. `apps/web/templates/application.html.erb`):
+
+  1. `<%= csrf_meta_tags %>` inside `<head>`
+  2. `<%= javascript "hanami-ujs" %>` the location is optional, but before `</body>` is a good spot.
+
+### Events
+
+Hanami UJS fires events to notify listeners that a certain operation happened:
+
+  * `"ajax.before"`
+  * `"ajax.complete"`
+
+You can listen to these events with:
+
+```js
+(function() {
+  var ajaxBeforeHandler = function(event) {
+    console.log(event);
+  };
+
+  var ajaxCompleteHandler = function(event) {
+    console.log(event);
+  };
+
+  document.addEventListener("ajax:before", ajaxBeforeHandler);
+  document.addEventListener("ajax:complete", ajaxCompleteHandler);
+})();
+```
+
+### AJAX Form
+
+```erb
+<%=
+  form_for :search, "/search", remote: true do
+    # ...
+
+    submit "Search"
+  end
+%>
+```
+
+When the user will hit "Search" the form will be sent via AJAX.
 
 ## Development
 
