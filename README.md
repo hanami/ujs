@@ -2,6 +2,10 @@
 
 Unobtrusive JavaScript (UJS) for [Hanami](http://hanamirb.org).
 
+## Version
+
+**This branch contains the code for `hanami-ujs` 0.1.x.**
+
 ## Status
 
 [![Gem Version](http://img.shields.io/gem/v/hanami-ujs.svg)](https://badge.fury.io/rb/hanami-ujs)
@@ -86,4 +90,4 @@ which is MIT licensed (Copyright (c) 2013 Łukasz Niemier). Thank you for your a
 
 ## Copyright
 
-Copyright © 2018 Luca Guidi – Released under MIT License
+Copyright © 2018-2021 Luca Guidi – Released under MIT License
